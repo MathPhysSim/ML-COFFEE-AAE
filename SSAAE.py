@@ -12,7 +12,7 @@ from keras.layers import Dense, Input, Flatten, Reshape, concatenate
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
-import GenerateDistribution
+import .GenerateDistribution
 
 # plt.ioff()
 class SSAAE():
