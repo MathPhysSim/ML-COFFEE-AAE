@@ -126,7 +126,7 @@ class SSAAE():
         directory = self.make_directory("images/SSAAE/map_")
         fig.savefig(directory + str(epochnumber) + ".png")
 
-    def train(self, x_train, y_train, x_test, y_test, batch_size=32, epochs=10000, save_interval=500):
+    def train(self, x_train, y_train, x_test, y_test, batch_size=16, epochs=10000, save_interval=500):
         for epoch in range(epochs):
             # ---------------Train Discriminator -------------
             # Select a random half batch of images
@@ -173,17 +173,6 @@ class SSAAE():
                 l = np.random.randint(0, 10)
             else:
                 l = y
-
-            mean = [10 * np.cos((l * 2 * np.pi) / 10), 10 * np.sin((l * 2 * np.pi) / 10)]
-            v1 = [np.cos((l * 2 * np.pi) / 10), np.sin((l * 2 * np.pi) / 10)]
-            v2 = [-np.sin((l * 2 * np.pi) / 10), np.cos((l * 2 * np.pi) / 10)]
-            a1 = 8
-            a2 = .4
-            M = np.vstack((v1, v2)).T
-            S = np.array([[a1, 0], [0, a2]])
-            cov = np.dot(np.dot(M, S), np.linalg.inv(M))
-            # cov = cov*cov.T
-            # print(np.random.multivariate_normal(mean=mean, cov=cov,size=1).shape)
             vec = self.scl.generate_sample(1, l)
             vectors.append(vec)
         return (np.array(vectors).reshape(-1, 2), labels)
