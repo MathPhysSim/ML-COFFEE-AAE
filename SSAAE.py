@@ -12,7 +12,7 @@ from keras.layers import Dense, Input, Flatten, Reshape, concatenate
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
-import .GenerateDistribution
+from .GenerateDistribution import Sample_Cern_Letters as SCL
 
 # plt.ioff()
 class SSAAE():
@@ -21,7 +21,7 @@ class SSAAE():
         self.optimizer_reconst = Adam(0.0001)
         self.optimizer_discriminator = Adam(0.0001)
         self._initAndCompileFullModel(img_shape, encoded_dim)
-        self.scl = GenerateDistribution.Sample_Cern_Letters()
+        self.scl = SCL()
 
     def _genEncoderModel(self, img_shape, encoded_dim):
         """ Build Encoder Model Based on Paper Configuration
