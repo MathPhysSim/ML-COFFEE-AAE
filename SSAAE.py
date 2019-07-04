@@ -14,7 +14,6 @@ from keras.optimizers import Adam
 
 from .GenerateDistribution import Sample_Cern_Letters as SCL
 
-# plt.ioff()
 class SSAAE():
     def __init__(self, img_shape=(28, 28), encoded_dim=2):
         self.encoded_dim = encoded_dim
