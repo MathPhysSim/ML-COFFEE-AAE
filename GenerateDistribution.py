@@ -125,18 +125,22 @@ class Sample_Class():
         return np.array(points)
 
 
-instance = Sample_Class()
-
-for i in range(10):
-    coordinates = instance.generate_sample(500, i)
-    plt.scatter(coordinates[:, 0], coordinates[:, 1], c='blue')
-
-plt.show()
-
 instance = Sample_Class('noncool')
 
 for i in range(10):
     coordinates = instance.generate_sample(500, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='r')
+    plt.title('First test 10D gaussian')
 
 plt.show()
+
+instance = Sample_Class()
+
+for i in range(10):
+    coordinates = instance.generate_sample(500, i)
+    plt.scatter(coordinates[:, 0], coordinates[:, 1], c='blue')
+    plt.title('Cool stuff')
+
+plt.show()
+
+
