@@ -10,7 +10,7 @@ from keras.optimizers import Adam, SGD
 import numpy as np
 import matplotlib
 # import helpers
-from GenerateDistribution import Sample_Cern_Letters as SCL
+# from GenerateDistribution import Sample_Cern_Letters as SCL
 import os
 import matplotlib.pyplot as plt
 
