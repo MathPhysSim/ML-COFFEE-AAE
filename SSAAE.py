@@ -3,16 +3,16 @@
 # Date : 04/07/2019
 # Semi Supervised Adverserial Autoencoder (SSAE) :https://arxiv.org/pdf/1511.05644.pdf
 
-from keras.models import Sequential, Model
-from keras.layers import Dense, Input, Flatten, Reshape, concatenate
-from keras.datasets import mnist
-from keras.optimizers import Adam, SGD
-import numpy as np
-import matplotlib
-
 import os
-import matplotlib.pyplot as plt
 
+import matplotlib.pyplot as plt
+import numpy as np
+from keras.datasets import mnist
+from keras.layers import Dense, Input, Flatten, Reshape, concatenate
+from keras.models import Sequential, Model
+from keras.optimizers import Adam
+
+import GenerateDistribution
 
 # plt.ioff()
 class SSAAE():
@@ -21,7 +21,7 @@ class SSAAE():
         self.optimizer_reconst = Adam(0.0001)
         self.optimizer_discriminator = Adam(0.0001)
         self._initAndCompileFullModel(img_shape, encoded_dim)
-        self.scl = SCL()
+        self.scl = GenerateDistribution.Sample_Cern_Letters()
 
     def _genEncoderModel(self, img_shape, encoded_dim):
         """ Build Encoder Model Based on Paper Configuration
