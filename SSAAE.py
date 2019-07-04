@@ -157,7 +157,8 @@ class SSAAE():
             # Train generator
             g_logg_similarity = self.encoder_discriminator.train_on_batch([imgs, labels], valid_y)
             # Plot the progress
-            print("%d [D loss: %f, acc: %.2f%%] [G acc: %f, mse: %f]" % (epoch, d_loss[0], 100 * d_loss[1],
+            if (epoch % int(save_interval/5) == 0):
+                print("%d [D loss: %f, acc: %.2f%%] [G acc: %f, mse: %f]" % (epoch, d_loss[0], 100 * d_loss[1],
                                                                          g_logg_similarity[1], g_loss_reconstruction))
             if (epoch % save_interval == 0):
                 self.imagegrid(epoch)
