@@ -106,7 +106,9 @@ class Sample_Class():
         M = np.vstack((v1, v2)).T
         S = np.array([[a1, 0], [0, a2]])
         self.cov = np.dot(np.dot(M, S), np.linalg.inv(M))
-        return np.random.multivariate_normal(mean=self.mean, cov=self.cov, size=number)
+        return_value = np.random.multivariate_normal(mean=self.mean, cov=self.cov, size=number)
+        print(return_value)
+        return return_value
 
     def generate_sample_letters(self, number, n):
         polygon = self.patches[n].get_verts()

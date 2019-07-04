@@ -169,10 +169,10 @@ class SSAAE():
         labels[range(len(y_train)), np.array(y_train).astype(int)] = 1
         for index, y in enumerate(y_train):
             if y == 10:
-                l = np.random.randint(0, 10)
+                n = np.random.randint(0, 10)
             else:
-                l = y
-            vec = self.scl.generate_sample(1, l)
+                n = y
+            vec = self.scl.generate_sample(1, n)
             vectors.append(vec)
         return (np.array(vectors).reshape(-1, 2), labels)
 
@@ -184,7 +184,7 @@ if __name__ == '__main__':
     y_train[idx_unlabel] = 10
     x_train = x_train.astype(np.float32) / 255.
     x_test = x_test.astype(np.float32) / 255.
-    ann = SSAAE()
+    ann = SSAAE('non cool')
     vecs, b = ann.generateRandomVectors(1000 * list(range(10)))
     plt.scatter(vecs[:, 0], vecs[:, 1])
     ann.train(x_train, y_train, x_test, y_test, epochs=10000)
