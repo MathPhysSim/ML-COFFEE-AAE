@@ -12,7 +12,7 @@ from keras.layers import Dense, Input, Flatten, Reshape, concatenate
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
-from .GenerateDistribution import Sample_Cern_Letters as SCL
+from .GenerateDistribution import Sample_Class as SCL
 
 class SSAAE():
     def __init__(self, img_shape=(28, 28), encoded_dim=2):
