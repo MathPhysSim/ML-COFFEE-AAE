@@ -135,7 +135,7 @@ nr_samples = 500
 for i in range(10):
     coordinates = instance.generate_sample(nr_samples, i)
     coordinates = coordinates.reshape(500,2,1)
-    print(coordinates.shape)
+    # print(coordinates.shape)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='r')
     plt.title('First test 10D gaussian')
 
@@ -145,7 +145,7 @@ instance = Sample_Class()
 
 for i in range(10):
     coordinates = instance.generate_sample(nr_samples, i)
-    print(coordinates.shape)
+    # print(coordinates.shape)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='blue')
     plt.title('Cool stuff')
 
