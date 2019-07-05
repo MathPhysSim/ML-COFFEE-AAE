@@ -107,8 +107,9 @@ class Sample_Class():
         S = np.array([[a1, 0], [0, a2]])
         self.cov = np.dot(np.dot(M, S), np.linalg.inv(M))
         return_value = np.random.multivariate_normal(mean=self.mean, cov=self.cov, size=number)
-        print(return_value)
-        return return_value
+        # return_value = return_value.reshape(2,1)
+        return_value = np.array([np.array([np.array([x[0]]),np.array([x[0]])]) for x in return_value])
+        return np.array([return_value])
 
     def generate_sample_letters(self, number, n):
         polygon = self.patches[n].get_verts()
@@ -124,13 +125,15 @@ class Sample_Class():
             if bbPath.contains_point(coordinates):
                 points.append(coordinates)
             nr_points = len(points)
-        return np.array(points)
+        return_value = np.array(points)
+        print(return_value)
+        return return_value
 
 
 instance = Sample_Class('noncool')
 
 for i in range(10):
-    coordinates = instance.generate_sample(500, i)
+    coordinates = instance.generate_sample(10, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='r')
     plt.title('First test 10D gaussian')
 
@@ -139,7 +142,7 @@ plt.show()
 instance = Sample_Class()
 
 for i in range(10):
-    coordinates = instance.generate_sample(500, i)
+    coordinates = instance.generate_sample(10, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='blue')
     plt.title('Cool stuff')
 
