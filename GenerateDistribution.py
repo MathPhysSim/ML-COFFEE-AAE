@@ -107,6 +107,8 @@ class Sample_Class():
         S = np.array([[a1, 0], [0, a2]])
         self.cov = np.dot(np.dot(M, S), np.linalg.inv(M))
         return_value = np.random.multivariate_normal(mean=self.mean, cov=self.cov, size=number)
+        # return_value = return_value.reshape(2,1)
+        return_value = np.array([np.array([np.array([x[0]]),np.array([x[0]])]) for x in return_value])
         return np.array([return_value])
 
     def generate_sample_letters(self, number, n):
