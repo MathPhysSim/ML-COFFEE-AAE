@@ -132,7 +132,7 @@ class Sample_Class():
 
 instance = Sample_Class('noncool')
 
-nr_sampels = 5
+nr_sampels = 500
 for i in range(10):
     coordinates = instance.generate_sample(nr_sampels, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='r')
