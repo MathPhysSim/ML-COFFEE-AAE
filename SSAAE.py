@@ -113,6 +113,7 @@ class SSAAE():
             ax.imshow(img, cmap="gray")
         directory = self.make_directory("images/SSAAE/")
         fig.savefig(directory + str(epochnumber) + ".png")
+        print('Save imagegrid as: '+ directory + str(epochnumber) + ".png")
         plt.show()
         plt.close(fig)
 
@@ -123,6 +124,7 @@ class SSAAE():
         ax.scatter(lat[:, 0], lat[:, 1], c=y_test)
         directory = self.make_directory("images/SSAAE/map_")
         fig.savefig(directory + str(epochnumber) + ".png")
+        print('Save latent map as: ' + directory + str(epochnumber) + ".png")
 
     def train(self, x_train, y_train, x_test, y_test, batch_size=16, epochs=10000, save_interval=500):
         for epoch in range(epochs):
