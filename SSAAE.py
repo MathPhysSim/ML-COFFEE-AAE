@@ -12,15 +12,15 @@ from keras.layers import Dense, Input, Flatten, Reshape, concatenate
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 
-from .GenerateDistribution import Sample_Class as SCL
+from GenerateDistribution import Sample_Class as SCL
 
 class SSAAE():
-    def __init__(self, img_shape=(28, 28), encoded_dim=2):
+    def __init__(self, img_shape=(28, 28), encoded_dim=2, type='cool'):
         self.encoded_dim = encoded_dim
         self.optimizer_reconst = Adam(0.0001)
         self.optimizer_discriminator = Adam(0.0001)
         self._initAndCompileFullModel(img_shape, encoded_dim)
-        self.scl = SCL()
+        self.scl = SCL(type)
 
     def _genEncoderModel(self, img_shape, encoded_dim):
         """ Build Encoder Model Based on Paper Configuration
@@ -184,7 +184,7 @@ if __name__ == '__main__':
     y_train[idx_unlabel] = 10
     x_train = x_train.astype(np.float32) / 255.
     x_test = x_test.astype(np.float32) / 255.
-    ann = SSAAE('non cool')
+    ann = SSAAE(type='non cool')
     vecs, b = ann.generateRandomVectors(1000 * list(range(10)))
     plt.scatter(vecs[:, 0], vecs[:, 1])
     ann.train(x_train, y_train, x_test, y_test, epochs=10000)

@@ -107,8 +107,6 @@ class Sample_Class():
         S = np.array([[a1, 0], [0, a2]])
         self.cov = np.dot(np.dot(M, S), np.linalg.inv(M))
         return_value = np.random.multivariate_normal(mean=self.mean, cov=self.cov, size=number)
-        # return_value = return_value.reshape(2,1)
-        return_value = np.array([np.array([np.array([x[0]]),np.array([x[0]])]) for x in return_value])
         return np.array([return_value])
 
     def generate_sample_letters(self, number, n):
@@ -126,14 +124,15 @@ class Sample_Class():
                 points.append(coordinates)
             nr_points = len(points)
         return_value = np.array(points)
-        print(return_value)
+
         return return_value
 
 
 instance = Sample_Class('noncool')
 
+nr_sampels = 5
 for i in range(10):
-    coordinates = instance.generate_sample(10, i)
+    coordinates = instance.generate_sample(nr_sampels, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='r')
     plt.title('First test 10D gaussian')
 
@@ -142,7 +141,7 @@ plt.show()
 instance = Sample_Class()
 
 for i in range(10):
-    coordinates = instance.generate_sample(10, i)
+    coordinates = instance.generate_sample(nr_sampels, i)
     plt.scatter(coordinates[:, 0], coordinates[:, 1], c='blue')
     plt.title('Cool stuff')
 
